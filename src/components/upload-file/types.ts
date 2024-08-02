@@ -1,3 +1,3 @@
-export interface UploadFileProps extends Omit<FileProps, 'size'> {
-  size?: Size;
-}
+import { FileProps } from '../field/types';
+
+export interface UploadFileProps extends Omit<FileProps, 'size'> {}

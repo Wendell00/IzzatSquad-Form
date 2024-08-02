@@ -86,7 +86,6 @@ export default function Home() {
             options={categoriesOptions}
             selected={selected}
             onChange={(item) => setSelected(item)}
-            display="vertical"
             name={''}
           />
         </div>
