@@ -1,112 +1,147 @@
-import Image from "next/image";
+'use client';
+
+import { Button } from '@/components/button';
+import { InputText } from '@/components/input-text';
+import { UploadFile } from '@/components/upload-file/upload-file';
+import { FormLabel } from '@mui/material';
+import { useState } from 'react';
+
+import { InputSelect } from '@/components/input-select';
+
+import { RadioGroup } from '@/components/radio-group';
 
 export default function Home() {
+  const [selected, setSelected] = useState('');
+  const [selectedSize, setSelectedSize] = useState('');
+
+  const categoriesOptions = [
+    { label: 'Aspirado', value: 'aspirado' },
+    { label: 'Up!', value: 'up' },
+    { label: 'Dianteira TSI', value: 'dianteira_tsi' },
+    { label: 'Dianteira AP', value: 'dianteira_ap' },
+    { label: 'Traseira', value: 'traseira' }
+  ];
+
+  const sizeOptions = [
+    { label: 'P', value: 'p' },
+    { label: 'M', value: 'm' },
+    { label: 'G', value: 'g' },
+    { label: 'GG', value: 'gg' },
+    { label: 'G1', value: 'g1' },
+    { label: 'G2', value: 'g2' },
+    { label: 'G3', value: 'g3' }
+  ];
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
+    <main className="flex min-h-screen flex-col items-start w-full lg:w-[866px] mt-[32px] mx-auto overflow-hidden">
+      <div className="lg:p-8 border-[#ffffff50] lg:border-b-[2px] lg:border-l-[2px] lg:border-solid rounded-sm">
+        <p className="text-white  italic text-[24px] lg:text-[36px] tracking-[0.15px] font-normal leading-[34px]">
+          INSCRIÇÕES PARA PILOTO
+          <br></br>
+          <span className="font-extrabold text-[20px] lg:text-[30px]">
+            DRAGRACE2 TICO’S DAY
+          </span>
         </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+        <p className="text-white text-[14px] lg:text-[24px] tracking-[0.15px] font-light leading-[34px] mt-[8px]">
+          - Premiações para piloto destaque
+        </p>
+        <p className="text-white text-[14px] lg:text-[24px] tracking-[0.15px] font-light leading-[34px]">
+          - Premiações para carro destaque
+        </p>
+        <p className="text-white text-[14px] lg:text-[24px] tracking-[0.15px] font-light leading-[34px]">
+          - Camisa de piloto exclusiva do evento
+        </p>
+        <p className="text-white text-[14px] lg:text-[24px] tracking-[0.15px] font-light leading-[34px]">
+          - Direito a 1 acompanhante
+        </p>
+      </div>
+      <form
+        className="flex flex-col gap-[32px] mt-[32px] w-full"
+        autoComplete="off"
+      >
+        <div className="w-full flex lg:flex-row flex-col gap-[32px]">
+          <InputText
+            label="Nome completo"
+            placeholder="Nome completo"
+            onChange={() => {}}
+            required
+            className="w-full"
+          />
+          <InputText
+            label="Modelo do carro"
+            placeholder="Modelo do carro"
+            onChange={() => {}}
+            className="w-full"
+            required
+          />
         </div>
-      </div>
+        <div className="w-full flex flex-col gap-[8px]">
+          <FormLabel
+            id="demo-radio-buttons-group-label"
+            className="text-white font-normal text-base"
+          >
+            Categorias <span className="text-[#FF14B9]">*</span>
+          </FormLabel>
+          <RadioGroup
+            options={categoriesOptions}
+            selected={selected}
+            onChange={(item) => setSelected(item)}
+            display="vertical"
+            name={''}
+          />
+        </div>
+        <div className="w-full flex lg:flex-row flex-col gap-[32px]">
+          <InputText
+            label="Celular (Whatsapp)"
+            placeholder="Celular (Whatsapp)"
+            onChange={() => {}}
+            required
+          />
+          <InputText
+            label="E-mail"
+            placeholder="E-mail"
+            onChange={() => {}}
+            required
+          />
+        </div>
+        <div className="w-[224px] flex flex-col gap-[8px]">
+          <InputSelect
+            onChange={(item) => setSelectedSize(item.value)}
+            options={sizeOptions}
+            value={selectedSize}
+            placeholder="Selecione"
+            label="Tamanho da camiseta"
+            required
+          />
+        </div>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
+        <div>
+          <p className="text-white text-[16px] tracking-[0.15px] font-light leading-[34px] mt-[8px]">
+            Observações:
           </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
+          <p className="text-white text-[16px] tracking-[0.15px] font-light leading-[34px] ml-[8px]">
+            - Valor atual R$ 550,00 (1° Lote)
           </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
+          <p className="text-white text-[16px] tracking-[0.15px] font-light leading-[34px] ml-[8px]">
+            - Permitido até 1 acompanhante (não pagante)
           </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+          <p className="text-white text-[16px] tracking-[0.15px] font-light leading-[34px] ml-[8px]">
+            - Número do carro será enviado em seu e-mail
           </p>
-        </a>
+        </div>
+        <div className="w-full flex flex-col gap-[8px]">
+          <FormLabel
+            id="demo-radio-buttons-group-label"
+            className="text-white font-normal text-base"
+          >
+            Comprovante <span className="text-[#FF14B9]">*</span>
+          </FormLabel>
+          <UploadFile files={[]} onChange={() => {}} />
+        </div>
+      </form>
+      <div className="flex w-full justify-end gap-4 mt-[32px]">
+        <Button text="voltar" variant="outlined" />
+        <Button text="enviar" variant="contained" />
       </div>
     </main>
   );
