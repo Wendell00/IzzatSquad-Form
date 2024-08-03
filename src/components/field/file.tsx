@@ -140,7 +140,7 @@ export const File = forwardRef<HTMLInputElement, FileProps>(function File(
         src={'/upload.png'}
         className='mb-[16px]'
       />
-      <p className={'text-center'}>
+      <p className={'text-center text-white'}>
         <span className="text-white font-bold text-[16px]">
           {' '}
           Anexe o comprovante

@@ -1,18 +1,36 @@
 'use client';
 
 import { Button } from '@/components/button';
-import { InputText } from '@/components/input-text';
-import { UploadFile } from '@/components/upload-file/upload-file';
+
 import { FormLabel } from '@mui/material';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
-import { InputSelect } from '@/components/input-select';
+import { Schema, schema, defaultValues } from './schema';
 
-import { RadioGroup } from '@/components/radio-group';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  ControlledInput,
+  ControlledRadioGroup,
+  ControlledSelect,
+  ControlledUploadFile
+} from '@/components/controlled-field';
+import { useForm } from 'react-hook-form';
+import { firebaseConfig } from '@/services/firebase';
+
+import { initializeApp } from 'firebase/app';
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { fileToBase64 } from '@/utils/helpers';
+import { FileDownloadItem } from '@/components/file-download-item';
 
 export default function Home() {
-  const [selected, setSelected] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
+
+  const form = useForm<Schema>({
+    defaultValues,
+    resolver: zodResolver(schema)
+  });
+
+  const formRef = useRef<HTMLFormElement | null>(null);
 
   const categoriesOptions = [
     { label: 'Aspirado', value: 'aspirado' },
@@ -32,8 +50,24 @@ export default function Home() {
     { label: 'G3', value: 'g3' }
   ];
 
+  const handleOnSubmit = async (data: Schema): Promise<void> => {
+    data.comprovante.map(async (item) => {
+      if (item instanceof File) await fileToBase64(item);
+    });
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    try {
+      const docRef = await addDoc(collection(db, 'formularios'), data);
+      alert(`Document written with ID: ${docRef.id}`);
+      form.reset();
+    } catch (error) {
+      alert(`Error adding document: ${error}`);
+    }
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-start w-full lg:w-[866px] mt-[32px] mx-auto overflow-hidden">
+    <main className="flex min-h-screen flex-col items-start w-full lg:w-[900px] mt-[32px] mx-auto overflow-hidden lg:px-2">
       <div className="lg:p-8 border-[#ffffff50] lg:border-b-[2px] lg:border-l-[2px] lg:border-solid rounded-sm">
         <p className="text-white  italic text-[24px] lg:text-[36px] tracking-[0.15px] font-normal leading-[34px]">
           INSCRIÇÕES PARA PILOTO
@@ -56,22 +90,28 @@ export default function Home() {
         </p>
       </div>
       <form
-        className="flex flex-col gap-[32px] mt-[32px] w-full"
+        className="flex flex-col gap-[32px] mt-[32px] w-full "
         autoComplete="off"
+        onSubmit={form.handleSubmit(handleOnSubmit)}
+        ref={formRef}
       >
         <div className="w-full flex lg:flex-row flex-col gap-[32px]">
-          <InputText
+          <ControlledInput
+            control={form.control}
+            name="name"
             label="Nome completo"
             placeholder="Nome completo"
-            onChange={() => {}}
             required
             className="w-full"
+            autoComplete="off"
           />
-          <InputText
+          <ControlledInput
+            control={form.control}
+            name="carModel"
             label="Modelo do carro"
             placeholder="Modelo do carro"
-            onChange={() => {}}
             className="w-full"
+            autoComplete="off"
             required
           />
         </div>
@@ -82,32 +122,35 @@ export default function Home() {
           >
             Categorias <span className="text-[#FF14B9]">*</span>
           </FormLabel>
-          <RadioGroup
+          <ControlledRadioGroup
             options={categoriesOptions}
-            selected={selected}
-            onChange={(item) => setSelected(item)}
-            name={''}
+            name="categories"
+            control={form.control}
           />
         </div>
         <div className="w-full flex lg:flex-row flex-col gap-[32px]">
-          <InputText
+          <ControlledInput
+            control={form.control}
+            name="phone"
             label="Celular (Whatsapp)"
             placeholder="Celular (Whatsapp)"
-            onChange={() => {}}
+            autoComplete="off"
             required
           />
-          <InputText
+          <ControlledInput
+            control={form.control}
+            name="email"
             label="E-mail"
             placeholder="E-mail"
-            onChange={() => {}}
             required
+            autoComplete='off'
           />
         </div>
         <div className="w-[224px] flex flex-col gap-[8px]">
-          <InputSelect
-            onChange={(item) => setSelectedSize(item.value)}
+          <ControlledSelect
+            name={'tshirt'}
+            control={form.control}
             options={sizeOptions}
-            value={selectedSize}
             placeholder="Selecione"
             label="Tamanho da camiseta"
             required
@@ -127,6 +170,9 @@ export default function Home() {
           <p className="text-white text-[16px] tracking-[0.15px] font-light leading-[34px] ml-[8px]">
             - Número do carro será enviado em seu e-mail
           </p>
+          <p className="text-white text-[16px] tracking-[0.15px] font-light leading-[34px] ml-[8px]">
+            - Obrigatório levar capacete
+          </p>
         </div>
         <div className="w-full flex flex-col gap-[8px]">
           <FormLabel
@@ -135,13 +181,17 @@ export default function Home() {
           >
             Comprovante <span className="text-[#FF14B9]">*</span>
           </FormLabel>
-          <UploadFile files={[]} onChange={() => {}} />
+          <ControlledUploadFile
+            control={form.control}
+            name="comprovante"
+            accept={['PDF', 'PNG', 'JPG']}
+          />
+        </div>
+        <div className="flex w-full justify-end gap-4">
+          <Button text="voltar" variant="outlined" type="button" />
+          <Button text="enviar" variant="contained" type="submit" />
         </div>
       </form>
-      <div className="flex w-full justify-end gap-4 mt-[32px]">
-        <Button text="voltar" variant="outlined" />
-        <Button text="enviar" variant="contained" />
-      </div>
     </main>
   );
 }

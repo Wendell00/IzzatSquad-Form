@@ -6,6 +6,7 @@ import { IconFile, IconLoader2, IconTrash } from '@tabler/icons-react';
 import { twMerge } from 'tailwind-merge';
 
 import type { FileItemProps } from './types';
+import { FabButton } from '../fab-button';
 
 export function FileItem({
   name,
@@ -19,30 +20,24 @@ export function FileItem({
       data-in-progress={inProgress}
       data-maximum-reached={maximumReached}
       className={twMerge(
-        'flex items-center transition-colors',
-        // Object.values(fileItem.shape),
-        // Object.values(sizeTheme),
-        // Object.values(text),
-        // Object.values(padding),
-        // Object.values(apperance),
+        'flex items-center justify-between transition-colors w-full py-2 px-6 border-solid rounded-[4px] border-[2px] border-[#FF14B9]',
         className
       )}
     >
-      <IconFile
-        data-in-progress={inProgress}
-        // className={twMerge(iconSize, iconColor)}
-      />
-      <span
-        data-in-progress={inProgress}
-        // className={twMerge('mr-auto', textColor)}
-      >
-        {name}
-      </span>
+      <div className="flex">
+        <IconFile
+          data-in-progress={inProgress}
+          className={twMerge('text-white mr-4')}
+        />
+        <span data-in-progress={inProgress} className={twMerge('text-white')}>
+          {name}
+        </span>
+      </div>
 
       {inProgress && !maximumReached ? (
         <IconLoader2
           data-in-progress={inProgress}
-        //   className={twMerge('animate-spin', iconColor, iconSize)}
+          //   className={twMerge('animate-spin', iconColor, iconSize)}
         />
       ) : null}
 
@@ -51,7 +46,7 @@ export function FileItem({
           {/* {t('inputFile.maxReached')} */}
         </span>
       ) : null}
-      {/* <FabButton icon={IconTrash} variant="danger" onClick={onRemove} /> */}
+      <FabButton icon={IconTrash} onClick={onRemove} />
     </main>
   );
 }

@@ -38,6 +38,15 @@ export default function RootLayout({
           />
         </nav>
         <ThemeProvider>{children}</ThemeProvider>
+        <a href="https://api.whatsapp.com/send?l=pt&phone=55011941187901&text=Olá gostaria de tirar dúvidas sobre o Dragrace" target="_blank">
+          <Image
+            src={'/wppicon.png'}
+            alt="Contato"
+            height={80}
+            width={80}
+            className="fixed bottom-[4rem] right-8 cursor-pointer"
+          />
+        </a>
       </body>
     </html>
   );

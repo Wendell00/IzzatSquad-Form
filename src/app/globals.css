@@ -7,3 +7,10 @@
       @apply content-[''] w-[12px] h-[12px] rounded-full bg-[#FF14B9] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
     }
   }
+
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #292D39 inset;
+    box-shadow: 0 0 0 1000px #292D39 inset;
+    -webkit-text-fill-color: white; /* Ajuste a cor do texto conforme necessário */
+  }

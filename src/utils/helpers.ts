@@ -13,3 +13,5 @@ export async function fileToBase64(
       reader.onerror = reject;
     });
   }
+
+  
