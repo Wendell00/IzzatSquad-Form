@@ -225,8 +225,8 @@ export default function Home() {
 
         <Whatsapp />
       </main>
-      <div className="w-full h-[100px] flex justify-center items-center">
-        <p className="text-white font-semibold">
+      <div className="w-full h-[100px] flex justify-center items-center px-4">
+        <p className="text-white font-semibold text-center">
           Copyright © 2024. Todos os direitos reservados ao IZZATSQUAD. ©
         </p>
       </div>

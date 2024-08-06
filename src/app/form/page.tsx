@@ -24,12 +24,19 @@ import { fileToBase64 } from '@/utils/helpers';
 
 import { Whatsapp } from '@/components/whatsapp';
 import { useRouter } from 'next/navigation';
+import { IconClipboard } from '@tabler/icons-react';
 
 export default function Form() {
   const form = useForm<Schema>({
     defaultValues,
     resolver: zodResolver(schema)
   });
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText('contato@izzatsquad.com').then(() => {
+      alert('Pix copiado!');
+    });
+  };
 
   const router = useRouter();
 
@@ -84,7 +91,7 @@ export default function Form() {
           className="w-[268px"
         />
       </nav>
-      <main className="flex min-h-screen flex-col items-start w-full lg:w-[900px] mt-[32px] mx-auto overflow-hidden lg:px-2">
+      <main className="flex min-h-screen flex-col items-start w-full lg:w-[900px] mt-[32px] mx-auto overflow-hidden px-[4px] lg:px-2">
         <div className="lg:p-8 border-[#ffffff50] lg:border-b-[2px] lg:border-l-[2px] lg:border-solid rounded-sm">
           <p className="text-white  italic text-[24px] lg:text-[36px] tracking-[0.15px] font-normal leading-[34px]">
             INSCRIÇÕES PARA PILOTO
@@ -194,6 +201,24 @@ export default function Form() {
               - Obrigatório levar capacete
             </p>
           </div>
+
+          <div className="flex w-full text-start gap-[16px]">
+            <p className="text-white font-bold text-[18px] lg:text-[24px]">
+              PIX: contato@izzatsquad.com
+            </p>
+            <div
+              className="flex h-full items-center gap-[8px] cursor-pointer"
+              onClick={copyToClipboard}
+            >
+              <IconClipboard
+                className={` text-white w-[26px] h-[26px] lg:w-[34px] lg:h-[34px]`}
+              />
+              <p className="text-white font-bold text-[14px] lg:text-[16px]">
+                Copiar
+              </p>
+            </div>
+          </div>
+
           <div className="w-full flex flex-col gap-[8px]">
             <FormLabel
               id="demo-radio-buttons-group-label"
@@ -207,7 +232,7 @@ export default function Form() {
               accept={['PDF', 'PNG', 'JPG']}
             />
           </div>
-          <div className="flex w-full justify-end gap-4">
+          <div className="flex w-full justify-end gap-4 mb-[32px]">
             <Button
               text="voltar"
               variant="outlined"

@@ -15,7 +15,7 @@ export function Whatsapp(): ReactElement {
       alt="Contato"
       height={80}
       width={80}
-      className="fixed bottom-[4rem] right-8 cursor-pointer"
+      className="fixed bottom-[4rem] right-8 cursor-pointer w-[50px] h-auto lg:w-[80px] lg:h-auto"
       onClick={handleButtonClick}
     />
   );
