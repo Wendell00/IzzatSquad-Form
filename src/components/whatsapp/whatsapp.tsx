@@ -5,14 +5,13 @@ import React, { ReactElement } from 'react';
 
 export function Whatsapp(): ReactElement {
   const handleButtonClick = () => {
-    console.log('oi');
     window.open(
       'https://api.whatsapp.com/send?l=pt&phone=55011941187901&text=Olá gostaria de tirar dúvidas sobre o Dragrace'
     );
   };
   return (
     <Image
-      src={'/wppicon.png'}
+      src={'/wppIcon.png'}
       alt="Contato"
       height={80}
       width={80}
