@@ -118,6 +118,7 @@ export default function Form() {
           height={53}
           width={268}
           className="w-[268px"
+          onClick={handleOnClick}
         />
       </nav>
       <main className="flex min-h-screen flex-col items-start w-full lg:w-[900px] mt-[32px] mx-auto overflow-hidden px-[4px] lg:px-2">
