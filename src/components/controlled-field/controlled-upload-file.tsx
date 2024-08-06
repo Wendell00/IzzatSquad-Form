@@ -25,7 +25,7 @@ export function ControlledUploadFile<Values extends FieldValues>({
   shouldUnregister,
   ...props
 }: UploadFileProps<Values>): ReactElement {
-  const { field } = useController({
+  const { field, fieldState } = useController({
     name,
     rules,
     shouldUnregister,
@@ -37,6 +37,7 @@ export function ControlledUploadFile<Values extends FieldValues>({
     <UploadFile
       files={field.value ?? []}
       onChange={field.onChange}
+      errorMessage={fieldState.error?.message}
       {...props}
     />
   );

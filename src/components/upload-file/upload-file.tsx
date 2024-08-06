@@ -7,6 +7,8 @@ import { twMerge } from 'tailwind-merge';
 import { File, FileItem } from '../field';
 import type { FileProps as UploadFileProps } from '../field/types';
 
+import * as Builder from '../field';
+
 export function UploadFile({
   files,
   rawAccept,
@@ -14,7 +16,8 @@ export function UploadFile({
   accept = [],
   className = '',
   maxSize,
-  multiple = false
+  multiple = false,
+  errorMessage
 }: UploadFileProps): ReactElement {
   const handleOnRemove = (index: number): void => {
     onChange(files.filter((_, i) => index !== i));
@@ -40,6 +43,7 @@ export function UploadFile({
             onRemove={() => handleOnRemove(index)}
           />
         ))}
+        <Builder.ErrorMessage>{errorMessage}</Builder.ErrorMessage>
       </section>
     </main>
   );

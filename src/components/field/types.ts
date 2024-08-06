@@ -117,6 +117,7 @@ export interface FileProps {
   rawAccept?: string;
   accept?: FileType[];
   className?: string;
+  errorMessage?: string;
 }
 
 export interface OptionProps extends OptionHTMLAttributes<HTMLOptionElement> {}

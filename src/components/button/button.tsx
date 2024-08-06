@@ -12,9 +12,20 @@ function getTheme(variant: 'contained' | 'outlined'): string {
   }
 }
 
-export function ButtonComponent({ text, variant, loading, type }: Props) {
+export function ButtonComponent({
+  text,
+  variant,
+  loading,
+  type,
+  ...props
+}: Props) {
   return (
-    <Button variant={variant} className={getTheme(variant)} type={type}>
+    <Button
+      variant={variant}
+      className={getTheme(variant)}
+      type={type}
+      {...props}
+    >
       {text.toUpperCase()}
       {loading ? (
         <IconLoader2 size={18} className="animate-spin absolute right-4" />

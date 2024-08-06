@@ -12,5 +12,15 @@
   input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px #292D39 inset;
     box-shadow: 0 0 0 1000px #292D39 inset;
-    -webkit-text-fill-color: white; /* Ajuste a cor do texto conforme necessário */
+    -webkit-text-fill-color: white;
+  }
+
+  .background-personalizado {
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, #292D39 0%, transparent 100%);
+  }
+
+  .bg-diferente{
+    background: rgb(41,45,57);
+    background: linear-gradient(90deg, rgba(41,45,57,1) 1%, rgba(49,54,68,1) 50%, rgba(41,45,57,1) 100%);
   }

@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
+import { Noto_Serif_Tibetan } from 'next/font/google';
 import { twMerge } from 'tailwind-merge';
 import Image from 'next/image';
 import './globals.css';
 import { IconMenu2 } from '@tabler/icons-react';
 import { ThemeProvider } from '@/components/themeProvider';
+
 const roboto = Roboto({
   weight: ['100', '300', '400', '500', '700', '900'],
   subsets: ['latin']
@@ -25,10 +27,10 @@ export default function RootLayout({
       <body
         className={twMerge(
           roboto.className,
-          'bg-[#292D39] p-[24px] w-screen overflow-x-hidden'
+          'bg-[#292D39] w-screen overflow-x-hidden pt-[120px]'
         )}
       >
-        <nav className="flex w-full justify-between items-center shadow-slate-900">
+        <nav className="flex w-full justify-between items-center px-24 fixed bg-[#292D39] z-[99] h-[120px] top-0">
           <div></div>
           <Image src={'/izzat.svg'} alt="IzzatSquad" height={53} width={268} />
           <IconMenu2
@@ -38,15 +40,6 @@ export default function RootLayout({
           />
         </nav>
         <ThemeProvider>{children}</ThemeProvider>
-        <a href="https://api.whatsapp.com/send?l=pt&phone=55011941187901&text=Olá gostaria de tirar dúvidas sobre o Dragrace" target="_blank">
-          <Image
-            src={'/wppicon.png'}
-            alt="Contato"
-            height={80}
-            width={80}
-            className="fixed bottom-[4rem] right-8 cursor-pointer"
-          />
-        </a>
       </body>
     </html>
   );

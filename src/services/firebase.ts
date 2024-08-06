@@ -1,5 +1,5 @@
 const firebaseConfig = {
-  apiKey: 'AIzaSyAWqvPGeGlI_NT2xxgtYZyWlRBpCrznopo',
+  apiKey: process.env.APIKEY,
   authDomain: 'izzatsquad-f4e27.firebaseapp.com',
   projectId: 'izzatsquad-f4e27',
   storageBucket: 'izzatsquad-f4e27.appspot.com',

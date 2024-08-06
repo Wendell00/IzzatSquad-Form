@@ -78,7 +78,7 @@ export function Select({
         </PopoverAnchor>
         <Builder.ErrorMessage>{errorMessage}</Builder.ErrorMessage>
       </div>
-      <Builder.WrapperOption style={{ width }} className='relative z-20'>
+      <Builder.WrapperOption style={{ width }} className="relative z-20">
         {options.map((option, index) => (
           <Builder.Option
             key={index}
