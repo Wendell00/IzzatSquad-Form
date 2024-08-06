@@ -2,6 +2,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import { Props } from './types';
 import { IconLoader2 } from '@tabler/icons-react';
+import { twMerge } from 'tailwind-merge';
 
 function getTheme(variant: 'contained' | 'outlined'): string {
   switch (variant) {
@@ -17,12 +18,13 @@ export function ButtonComponent({
   variant,
   loading,
   type,
+  className,
   ...props
 }: Props) {
   return (
     <Button
       variant={variant}
-      className={getTheme(variant)}
+      className={twMerge(getTheme(variant), className)}
       type={type}
       {...props}
     >

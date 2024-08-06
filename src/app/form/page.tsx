@@ -5,6 +5,8 @@ import { Button } from '@/components/button';
 import { FormLabel } from '@mui/material';
 import { useRef } from 'react';
 
+import Image from 'next/image';
+
 import { Schema, schema, defaultValues } from './schema';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -67,136 +69,156 @@ export default function Form() {
     }
   };
 
-  return (
-    <main className="flex min-h-screen flex-col items-start w-full lg:w-[900px] mt-[32px] mx-auto overflow-hidden lg:px-2">
-      <div className="lg:p-8 border-[#ffffff50] lg:border-b-[2px] lg:border-l-[2px] lg:border-solid rounded-sm">
-        <p className="text-white  italic text-[24px] lg:text-[36px] tracking-[0.15px] font-normal leading-[34px]">
-          INSCRIÇÕES PARA PILOTO
-          <br></br>
-          <span className="font-extrabold text-[20px] lg:text-[30px]">
-            DRAGRACE2 TICO’S DAY
-          </span>
-        </p>
-        <p className="text-white text-[14px] lg:text-[24px] tracking-[0.15px] font-light leading-[34px] mt-[8px]">
-          - Premiações para piloto destaque
-        </p>
-        <p className="text-white text-[14px] lg:text-[24px] tracking-[0.15px] font-light leading-[34px]">
-          - Premiações para carro destaque
-        </p>
-        <p className="text-white text-[14px] lg:text-[24px] tracking-[0.15px] font-light leading-[34px]">
-          - Camisa de piloto exclusiva do evento
-        </p>
-        <p className="text-white text-[14px] lg:text-[24px] tracking-[0.15px] font-light leading-[34px]">
-          - Direito a 1 acompanhante
-        </p>
-      </div>
-      <form
-        className="flex flex-col gap-[32px] mt-[32px] w-full "
-        autoComplete="off"
-        onSubmit={form.handleSubmit(handleOnSubmit)}
-        ref={formRef}
-      >
-        <div className="w-full flex lg:flex-row flex-col gap-[32px]">
-          <ControlledInput
-            control={form.control}
-            name="name"
-            label="Nome completo"
-            placeholder="Nome completo"
-            required
-            className="w-full"
-            autoComplete="off"
-          />
-          <ControlledInput
-            control={form.control}
-            name="carModel"
-            label="Modelo do carro"
-            placeholder="Modelo do carro"
-            className="w-full"
-            autoComplete="off"
-            required
-          />
-        </div>
-        <div className="w-full flex flex-col gap-[8px]">
-          <FormLabel
-            id="demo-radio-buttons-group-label"
-            className="text-white font-normal text-base"
-          >
-            Categorias <span className="text-[#FF14B9]">*</span>
-          </FormLabel>
-          <ControlledRadioGroup
-            options={categoriesOptions}
-            name="categories"
-            control={form.control}
-          />
-        </div>
-        <div className="w-full flex lg:flex-row flex-col gap-[32px]">
-          <ControlledInput
-            control={form.control}
-            name="phone"
-            label="Celular (Whatsapp)"
-            placeholder="Celular (Whatsapp)"
-            autoComplete="off"
-            required
-          />
-          <ControlledInput
-            control={form.control}
-            name="email"
-            label="E-mail"
-            placeholder="E-mail"
-            required
-            autoComplete="off"
-          />
-        </div>
-        <div className="w-[224px] flex flex-col gap-[8px]">
-          <FormLabel
-            id="demo-radio-buttons-group-label"
-            className="text-white font-normal text-base"
-          >
-            Tamanho da camiseta <span className="text-[#FF14B9]">*</span>
-          </FormLabel>
-          <ControlledRadioGroup
-            options={sizeOptions}
-            name="tshirt"
-            control={form.control}
-          />
-        </div>
+  const handleOnClick = () => {
+    router.push('/');
+  };
 
-        <div>
-          <p className="text-white text-[16px] tracking-[0.15px] font-light leading-[34px] mt-[8px]">
-            Observações:
+  return (
+    <>
+      <nav className="flex w-full justify-center items-center lg:px-24 fixed bg-[#292D39] z-[99] h-[120px] top-0">
+        <Image
+          src={'/izzat.svg'}
+          alt="IzzatSquad"
+          height={53}
+          width={268}
+          className="w-[268px"
+        />
+      </nav>
+      <main className="flex min-h-screen flex-col items-start w-full lg:w-[900px] mt-[32px] mx-auto overflow-hidden lg:px-2">
+        <div className="lg:p-8 border-[#ffffff50] lg:border-b-[2px] lg:border-l-[2px] lg:border-solid rounded-sm">
+          <p className="text-white  italic text-[24px] lg:text-[36px] tracking-[0.15px] font-normal leading-[34px]">
+            INSCRIÇÕES PARA PILOTO
+            <br></br>
+            <span className="font-extrabold text-[20px] lg:text-[30px]">
+              DRAGRACE2 TICO’S DAY
+            </span>
           </p>
-          <p className="text-white text-[16px] tracking-[0.15px] font-light leading-[34px] ml-[8px]">
-            - Valor atual R$ 550,00 (1° Lote)
+          <p className="text-white text-[14px] lg:text-[24px] tracking-[0.15px] font-light leading-[34px] mt-[8px]">
+            - Premiações para piloto destaque
           </p>
-          <p className="text-white text-[16px] tracking-[0.15px] font-light leading-[34px] ml-[8px]">
-            - Permitido até 1 acompanhante (não pagante)
+          <p className="text-white text-[14px] lg:text-[24px] tracking-[0.15px] font-light leading-[34px]">
+            - Premiações para carro destaque
           </p>
-          <p className="text-white text-[16px] tracking-[0.15px] font-light leading-[34px] ml-[8px]">
-            - Número do carro será enviado em seu e-mail
+          <p className="text-white text-[14px] lg:text-[24px] tracking-[0.15px] font-light leading-[34px]">
+            - Camisa de piloto exclusiva do evento
           </p>
-          <p className="text-white text-[16px] tracking-[0.15px] font-light leading-[34px] ml-[8px]">
-            - Obrigatório levar capacete
+          <p className="text-white text-[14px] lg:text-[24px] tracking-[0.15px] font-light leading-[34px]">
+            - Direito a 1 acompanhante
           </p>
         </div>
-        <div className="w-full flex flex-col gap-[8px]">
-          <FormLabel
-            id="demo-radio-buttons-group-label"
-            className="text-white font-normal text-base"
-          >
-            Comprovante <span className="text-[#FF14B9]">*</span>
-          </FormLabel>
-          <ControlledUploadFile
-            control={form.control}
-            name="comprovante"
-            accept={['PDF', 'PNG', 'JPG']}
-          />
-        </div>
-        <div className="flex w-full justify-end gap-4">
-          <Button text="voltar" variant="outlined" type="button" />
-          <Button text="enviar" variant="contained" type="submit" />
-        </div>
-      </form>
-      <Whatsapp />
-    </main>
+        <form
+          className="flex flex-col gap-[32px] mt-[32px] w-full "
+          autoComplete="off"
+          onSubmit={form.handleSubmit(handleOnSubmit)}
+          ref={formRef}
+        >
+          <div className="w-full flex lg:flex-row flex-col gap-[32px]">
+            <ControlledInput
+              control={form.control}
+              name="name"
+              label="Nome completo"
+              placeholder="Nome completo"
+              required
+              className="w-full"
+              autoComplete="off"
+            />
+            <ControlledInput
+              control={form.control}
+              name="carModel"
+              label="Modelo do carro"
+              placeholder="Modelo do carro"
+              className="w-full"
+              autoComplete="off"
+              required
+            />
+          </div>
+          <div className="w-full flex flex-col gap-[8px]">
+            <FormLabel
+              id="demo-radio-buttons-group-label"
+              className="text-white font-normal text-base"
+            >
+              Categorias <span className="text-[#FF14B9]">*</span>
+            </FormLabel>
+            <ControlledRadioGroup
+              options={categoriesOptions}
+              name="categories"
+              control={form.control}
+            />
+          </div>
+          <div className="w-full flex lg:flex-row flex-col gap-[32px]">
+            <ControlledInput
+              control={form.control}
+              name="phone"
+              label="Celular (Whatsapp)"
+              placeholder="Celular (Whatsapp)"
+              autoComplete="off"
+              required
+            />
+            <ControlledInput
+              control={form.control}
+              name="email"
+              label="E-mail"
+              placeholder="E-mail"
+              required
+              autoComplete="off"
+            />
+          </div>
+          <div className="w-[224px] flex flex-col gap-[8px]">
+            <FormLabel
+              id="demo-radio-buttons-group-label"
+              className="text-white font-normal text-base"
+            >
+              Tamanho da camiseta <span className="text-[#FF14B9]">*</span>
+            </FormLabel>
+            <ControlledRadioGroup
+              options={sizeOptions}
+              name="tshirt"
+              control={form.control}
+            />
+          </div>
+
+          <div>
+            <p className="text-white text-[16px] tracking-[0.15px] font-light leading-[34px] mt-[8px]">
+              Observações:
+            </p>
+            <p className="text-white text-[16px] tracking-[0.15px] font-light leading-[34px] ml-[8px]">
+              - Valor atual R$ 550,00 (1° Lote)
+            </p>
+            <p className="text-white text-[16px] tracking-[0.15px] font-light leading-[34px] ml-[8px]">
+              - Permitido até 1 acompanhante (não pagante)
+            </p>
+            <p className="text-white text-[16px] tracking-[0.15px] font-light leading-[34px] ml-[8px]">
+              - Número do carro será enviado em seu e-mail
+            </p>
+            <p className="text-white text-[16px] tracking-[0.15px] font-light leading-[34px] ml-[8px]">
+              - Obrigatório levar capacete
+            </p>
+          </div>
+          <div className="w-full flex flex-col gap-[8px]">
+            <FormLabel
+              id="demo-radio-buttons-group-label"
+              className="text-white font-normal text-base"
+            >
+              Comprovante <span className="text-[#FF14B9]">*</span>
+            </FormLabel>
+            <ControlledUploadFile
+              control={form.control}
+              name="comprovante"
+              accept={['PDF', 'PNG', 'JPG']}
+            />
+          </div>
+          <div className="flex w-full justify-end gap-4">
+            <Button
+              text="voltar"
+              variant="outlined"
+              type="button"
+              onClick={handleOnClick}
+            />
+            <Button text="enviar" variant="contained" type="submit" />
+          </div>
+        </form>
+        <Whatsapp />
+      </main>
+    </>
   );
 }

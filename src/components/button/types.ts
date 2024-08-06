@@ -6,4 +6,5 @@ export interface Props {
   loading?: boolean;
   type?: 'button' | 'reset' | 'submit';
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  className?: string;
 }
