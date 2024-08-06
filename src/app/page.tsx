@@ -43,11 +43,7 @@ export default function Home() {
   return (
     <>
       <nav className="flex w-full justify-between items-center lg:px-24 fixed bg-[#292D39] z-[99] h-[120px] top-0">
-        <Button
-          text={'SE INSCREVER'}
-          variant={'contained'}
-          className="lg:invisible hidden lg:block"
-        />
+        <div className="lg:invisible hidden lg:block w-[224px]" />
         <Image
           src={'/izzat.svg'}
           alt="IzzatSquad"

@@ -19,7 +19,7 @@ import { useForm } from 'react-hook-form';
 import { firebaseConfig } from '@/services/firebase';
 
 import { initializeApp } from 'firebase/app';
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
 import { fileToBase64 } from '@/utils/helpers';
 
 import { Whatsapp } from '@/components/whatsapp';
@@ -50,6 +50,11 @@ export default function Form() {
     { label: 'Traseira', value: 'traseira' }
   ];
 
+  const comprovanteOptions = [
+    { label: 'Sim', value: 'sim' },
+    { label: 'Não', value: 'nao' }
+  ];
+
   const sizeOptions = [
     { label: 'P', value: 'p' },
     { label: 'M', value: 'm' },
@@ -64,17 +69,37 @@ export default function Form() {
     data.comprovante.map(async (item) => {
       if (item instanceof File) await fileToBase64(item);
     });
-
+    let numeroAleatorio = gerarNumeroAleatorio();
+    let dados = [] as Schema[];
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     try {
-      await addDoc(collection(db, 'formularios'), data);
-      router.push('/form/success');
+      const querySnapshot = await getDocs(collection(db, 'formularios'));
+      querySnapshot.forEach((doc) => {
+        dados.push(doc.data() as Schema);
+      });
+
+      while (dados.map((item) => item.number).includes(numeroAleatorio)) {
+        numeroAleatorio = gerarNumeroAleatorio();
+      }
+
+      await addDoc(collection(db, 'formularios'), {
+        ...data,
+        number: numeroAleatorio
+      });
+
+      router.push(`/form/${numeroAleatorio}/success`);
       form.reset();
     } catch (error) {
-      alert(`Erro, tente novamente`);
+      alert(`Erro, Atualize a página e faça novamente`);
     }
   };
+
+  function gerarNumeroAleatorio() {
+    return Math.floor(Math.random() * 100);
+  }
+
+  const comprovanteWhatsapp = form.watch('comprovanteWhatsapp');
 
   const handleOnClick = () => {
     router.push('/');
@@ -224,14 +249,32 @@ export default function Form() {
               id="demo-radio-buttons-group-label"
               className="text-white font-normal text-base"
             >
-              Comprovante <span className="text-[#FF14B9]">*</span>
+              Deseja enviar comprovante no whatsapp?
+              <span className="text-[#FF14B9]">*</span>
             </FormLabel>
-            <ControlledUploadFile
+            <ControlledRadioGroup
+              options={comprovanteOptions}
+              name="comprovanteWhatsapp"
               control={form.control}
-              name="comprovante"
-              accept={['PDF', 'PNG', 'JPG']}
             />
           </div>
+
+          {comprovanteWhatsapp === 'sim' ? null : (
+            <div className="w-full flex flex-col gap-[8px]">
+              <FormLabel
+                id="demo-radio-buttons-group-label"
+                className="text-white font-normal text-base"
+              >
+                Comprovante <span className="text-[#FF14B9]">*</span>
+              </FormLabel>
+              <ControlledUploadFile
+                control={form.control}
+                name="comprovante"
+                accept={['PDF', 'PNG', 'JPG']}
+              />
+            </div>
+          )}
+
           <div className="flex w-full justify-end gap-4 mb-[32px]">
             <Button
               text="voltar"

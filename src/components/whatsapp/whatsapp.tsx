@@ -6,7 +6,7 @@ import React, { ReactElement } from 'react';
 export function Whatsapp(): ReactElement {
   const handleButtonClick = () => {
     window.open(
-      'https://api.whatsapp.com/send?l=pt&phone=55011941187901&text=Olá gostaria de tirar dúvidas sobre o Dragrace'
+      'https://api.whatsapp.com/send?l=pt&phone=55011983741288&text=Olá gostaria de tirar dúvidas sobre o Dragrace'
     );
   };
   return (
