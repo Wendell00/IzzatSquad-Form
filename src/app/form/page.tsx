@@ -25,12 +25,15 @@ import { fileToBase64 } from '@/utils/helpers';
 import { Whatsapp } from '@/components/whatsapp';
 import { useRouter } from 'next/navigation';
 import { IconClipboard } from '@tabler/icons-react';
+import { useToggle } from '@/hooks/use-toggle';
 
 export default function Form() {
   const form = useForm<Schema>({
     defaultValues,
     resolver: zodResolver(schema)
   });
+
+  const loading = useToggle(true);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText('contato@izzatsquad.com').then(() => {
@@ -66,6 +69,7 @@ export default function Form() {
   ];
 
   const handleOnSubmit = async (data: Schema): Promise<void> => {
+    loading.on();
     data.comprovante.map(async (item) => {
       if (item instanceof File) await fileToBase64(item);
     });
@@ -282,7 +286,12 @@ export default function Form() {
               type="button"
               onClick={handleOnClick}
             />
-            <Button text="enviar" variant="contained" type="submit" />
+            <Button
+              text="enviar"
+              variant="contained"
+              type="submit"
+              loading={loading.value}
+            />
           </div>
         </form>
         <Whatsapp />
