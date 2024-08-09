@@ -33,7 +33,7 @@ export default function Form() {
     resolver: zodResolver(schema)
   });
 
-  const loading = useToggle(true);
+  const loading = useToggle(false);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText('contato@izzatsquad.com').then(() => {
@@ -74,7 +74,7 @@ export default function Form() {
       if (item instanceof File) await fileToBase64(item);
     });
     let numeroAleatorio = gerarNumeroAleatorio();
-    let dados = [] as Schema[];
+    const dados = [] as Schema[];
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     try {
