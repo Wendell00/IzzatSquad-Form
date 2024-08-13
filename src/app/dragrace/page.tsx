@@ -13,7 +13,7 @@ import { IconMenu2 } from '@tabler/icons-react';
 export default function Home() {
   const router = useRouter();
   const handleOnClick = () => {
-    router.push('/form');
+    router.push('/dragrace/form');
   };
 
   const handleOnClickLogo = () => {
@@ -47,7 +47,7 @@ export default function Home() {
 
   return (
     <>
-      <nav className="flex flex-row w-full justify-center items-center lg:px-24 fixed bg-[#292D39] z-[99] h-[120px] top-0 px-8">
+      <nav className="flex flex-col w-full justify-center items-center lg:px-24 fixed bg-[#292D39] z-[99] h-auto top-0 px-8 py-4">
         <Image
           src={'/logo.svg'}
           alt="IzzatSquad"
@@ -55,6 +55,11 @@ export default function Home() {
           width={64}
           className="w-[80px] h-[80px] cursor-pointer"
           onClick={handleOnClickLogo}
+        />
+        <Button
+          text={'SE INSCREVER'}
+          variant={'contained'}
+          onClick={handleOnClick}
         />
         {/* <IconMenu2 className="text-white w-[40px] h-[40px]" /> */}
       </nav>
