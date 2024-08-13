@@ -22,5 +22,5 @@
 
   .bg-diferente{
     background: rgb(41,45,57);
-    background: linear-gradient(90deg, rgba(41,45,57,1) 1%, rgba(49,54,68,1) 50%, rgba(41,45,57,1) 100%);
+    background: linear-gradient(90deg, #1a1a1b 1%, #7e7e7e22 50%, #1a1a1b 100%);
   }

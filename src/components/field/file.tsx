@@ -121,7 +121,7 @@ export const File = forwardRef<HTMLInputElement, FileProps>(function File(
       onDrop={handleOnDrop}
       onDragOver={(event) => event.preventDefault()}
       className={twMerge(
-        'flex flex-col items-center justify-center cursor-pointer w-full border-[2px] border-dashed border-[#FF14B9] p-8 bg-[#3E424D]',
+        'flex flex-col items-center justify-center cursor-pointer w-full border-[2px] border-dashed border-[#FF14B9] p-8 bg-[#303033]',
         className
       )}
     >

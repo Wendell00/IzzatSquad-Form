@@ -24,7 +24,7 @@ export default function RootLayout({
       <body
         className={twMerge(
           roboto.className,
-          'bg-[#292D39] w-screen overflow-x-hidden pt-[120px]'
+          'bg-[#1a1a1b] w-screen overflow-x-hidden pt-[120px]'
         )}
       >
         <ThemeProvider>{children}</ThemeProvider>

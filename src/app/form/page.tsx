@@ -96,7 +96,7 @@ export default function Form() {
         number: numeroAleatorio
       });
 
-      router.push(`/dragrace/form/${numeroAleatorio}/success`);
+      router.push(`/form/${numeroAleatorio}/success`);
       form.reset();
     } catch (error) {
       alert(`Erro, Atualize a página e faça novamente`);
@@ -115,16 +115,15 @@ export default function Form() {
 
   return (
     <>
-      <nav className="flex flex-row w-full justify-center items-center lg:px-24 fixed bg-[#292D39] z-[99] h-[120px] top-0 px-8">
+      <nav className="flex flex-col w-full justify-center items-center lg:px-24 fixed bg-[#1a1a1b] z-[99] h-auto top-0 px-8 py-4">
         <Image
-          src={'/logo.svg'}
+          src={'/izzat.svg'}
           alt="IzzatSquad"
           height={64}
           width={64}
-          className="w-[80px] h-[80px] c"
+          className="w-[300px] h-auto cursor-pointer"
           onClick={handleOnClickLogo}
         />
-        {/* <IconMenu2 className="text-white w-[40px] h-[40px]" /> */}
       </nav>
       <main className="flex min-h-screen flex-col items-start w-full lg:w-[900px] mt-[32px] mx-auto overflow-hidden px-[4px] lg:px-2">
         <div className="lg:p-8 border-[#ffffff50] lg:border-b-[2px] lg:border-l-[2px] lg:border-solid rounded-sm">
