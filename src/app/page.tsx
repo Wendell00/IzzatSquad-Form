@@ -7,20 +7,10 @@ import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
-import AnimatedListItem from '@/components/animated-list/animated-list';
+import { IconBrandInstagram, IconMenu2 } from '@tabler/icons-react';
+import MyCarousel from '@/components/carousel/carousel';
 
 export default function Home() {
-  const router = useRouter();
-  const handleOnClick = () => {
-    router.push('/form');
-  };
-
-  const itemsValor = [
-    '1° Lote R$ 550,00',
-    '2° Lote R$ 650,00',
-    'No dia R$ 750,00'
-  ];
-
   const ref1 = useRef(null);
   const isInView1 = useInView(ref1);
   const ref2 = useRef(null);
@@ -30,198 +20,100 @@ export default function Home() {
   const ref4 = useRef(null);
   const isInView4 = useInView(ref4);
 
-  const itemsPremiacoes = ['PILOTO DESTAQUE', 'CARRO DESTAQUE'];
-
-  const itemsCategoria = [
-    'Aspirado',
-    'Up!',
-    'Dianteira TSI',
-    'Dianteira AP',
-    'Traseira'
-  ];
+  const router = useRouter();
+  const handleOnClick = () => {
+    router.push('/dragrace');
+  };
 
   return (
     <>
-      <nav className="flex lg:flex-row flex-col w-full justify-center lg:justify-between items-center lg:px-24 fixed bg-[#292D39] z-[99] h-[120px] top-0">
-        <div className="lg:invisible hidden lg:block w-[224px]" />
+      <nav className="flex flex-row w-full justify-center items-center lg:px-24 fixed bg-[#292D39] z-[99] h-[120px] top-0 px-8">
         <Image
-          src={'/izzat.svg'}
+          src={'/logo.svg'}
           alt="IzzatSquad"
-          height={53}
-          width={268}
-          className="lg:w-[268px] w-[200px]"
+          height={64}
+          width={64}
+          className="w-[80px] h-[80px]"
         />
-        <Button
-          text={'SE INSCREVER'}
-          variant={'contained'}
-          onClick={handleOnClick}
-        />
+        {/* <IconMenu2 className="text-white w-[40px] h-[40px]" /> */}
       </nav>
-      <main className="flex min-h-screen flex-col items-start w-screen max-w-[1440px] mx-auto overflow-hidden">
-        <div className="flex w-full h-[400px] relative overflow-hidden">
+      <main className="flex items-start w-screen max-w-[800px] mx-auto overflow-hidden relative">
+        <Image
+          src={'/main1.png'}
+          alt="IzzatSquad"
+          height={220}
+          width={320}
+          className="w-full h-[239px] opacity-50"
+        />
+        <div className="absolute w-full max-w-[800px] h-[239px] flex justify-center items-center flex-col gap-1">
+          <p className="text-white font-semibold text-center italic text-[36px]">
+            BEM-VINDOS
+          </p>
           <Image
-            className="w-full h-full opacity-10"
+            src={'/izzat.svg'}
+            alt="IzzatSquad"
+            height={220}
+            width={320}
+            className="w-[295px] h-auto"
+          />
+        </div>
+      </main>
+      <Whatsapp />
+      <div className="w-full max-w-[800px] flex flex-col justify-center items-center mt-8 mx-auto">
+        <p className="text-white font-semibold text-center italic text-[36px]">
+          EVENTOS
+        </p>
+
+        <div className="flex w-full h-[256px] relative overflow-hidden mt-8">
+          <Image
+            className="w-full h-[256px] opacity-10"
             src={'/mainGif.gif'}
-            width={1440}
-            height={400}
+            width={800}
+            height={256}
             alt="Izzat"
           />
           <div className="w-full h-[100px] background-personalizado absolute bottom-0"></div>
-          <div className="w-full h-full absolute flex flex-col justify-center items-center py-8">
-            <div className="w-full h-full flex justify-center items-center gap-[20px] lg:gap-[130px]">
+          <div className="w-full h-[256px] absolute flex flex-col justify-between items-center py-4">
+            <div className="w-full flex justify-center items-center">
               <motion.div
                 ref={ref4}
                 initial={{ x: -100, opacity: 0 }}
                 animate={isInView4 ? { x: 0, opacity: 1 } : {}}
                 transition={{ type: 'spring', stiffness: 30 }}
                 whileInView={{ opacity: 1 }}
-              >
-                <p
-                  className={`text-white font-extrabold italic text-[32px] lg:text-[82px] drop-shadow-2xl text-center`}
-                >
-                  DRAGRACE2 <br></br>{' '}
-                  <span className="text-[#FF14B9]">TICO’S</span> DAY
-                </p>
-              </motion.div>
-              <motion.div
-                ref={ref4}
-                initial={{ x: 100, opacity: 0 }}
-                animate={isInView4 ? { x: 0, opacity: 1 } : {}}
-                transition={{ type: 'spring', stiffness: 30 }}
-                whileInView={{ opacity: 1 }}
+                className="w-full max-w-[400px]"
               >
                 <Image
-                  src={'/logo.svg'}
-                  width={400}
-                  height={300}
-                  alt="Izzatsquad"
-                  className="w-[130px] lg:w-[350px] h-auto"
+                  src={'/dragrace.png'}
+                  alt="Dragrace"
+                  width={430}
+                  height={130}
+                  className="w-full h-auto"
                 />
               </motion.div>
             </div>
-            <p className="text-white font-bold text-[24px] italic">
-              VAGAS LIMITADAS! • 05/10
-            </p>
+            <div className="w-full flex flex-col items-center justify-center gap-4">
+              <Button
+                text="SE INSCREVA"
+                variant="contained"
+                className="w-[149px] h-[28px]"
+                onClick={handleOnClick}
+              />
+              <p className="text-white font-bold text-[14px] italic">
+                VAGAS LIMITADAS!
+              </p>
+            </div>
           </div>
         </div>
-        <motion.div
-          ref={ref1}
-          initial={{ y: -100, opacity: 0 }}
-          animate={isInView1 ? { y: 0, opacity: 1 } : {}}
-          transition={{ type: 'spring', stiffness: 30 }}
-          whileInView={{ opacity: 1 }}
-          className="w-full mt-[64px] flex justify-center"
-        >
-          <div className="flex justify-center w-full gap-4 items-center">
-            <p className="text-white font-bold text-[36px] lg:text-[48px] italic">
-              CATEGORIAS
-            </p>
-            <Image
-              src={'/zz.svg'}
-              width={120}
-              height={80}
-              alt="ZZ"
-              className="w-[80px] lg:w-[120px] h-auto"
-            />
-          </div>
-        </motion.div>
-        <div className="w-full flex justify-center h-auto mt-[64px]">
-          <ul className="flex flex-col w-full justify-center items-center text-white text-[36px] lg:text-[48px] font-semibold italic gap-[16px]">
-            {itemsCategoria.map((item, index) => (
-              <AnimatedListItem key={index} index={index}>
-                <li className="bg-diferente w-screen h-[90px] flex justify-center items-center">
-                  {item}
-                </li>
-              </AnimatedListItem>
-            ))}
-          </ul>
-        </div>
-        <motion.div
-          ref={ref2}
-          initial={{ y: -100, opacity: 0 }}
-          animate={isInView2 ? { y: 0, opacity: 1 } : {}}
-          transition={{ type: 'spring', stiffness: 30 }}
-          whileInView={{ opacity: 1 }}
-          className="w-full flex justify-center"
-        >
-          <div className="flex justify-center w-full gap-4 items-center mt-[64px]">
-            <p className="text-white font-bold text-[36px] lg:text-[48px] italic">
-              VALORES
-            </p>
-            <Image
-              src={'/zz.svg'}
-              width={120}
-              height={80}
-              alt="ZZ"
-              className="w-[80px] lg:w-[120px] h-auto"
-            />
-          </div>
-        </motion.div>
-
-        <div className="w-full flex justify-center h-auto mt-[64px]">
-          <ul className="flex flex-col w-full justify-center items-center text-white text-[36px] lg:text-[48px] font-semibold italic gap-[16px]">
-            {itemsValor.map((item, index) => (
-              <AnimatedListItem key={index} index={index}>
-                <li className="bg-diferente w-screen h-[90px] flex justify-center items-center">
-                  {item}
-                </li>
-              </AnimatedListItem>
-            ))}
-          </ul>
-        </div>
-
-        <motion.div
-          ref={ref3}
-          initial={{ y: -100, opacity: 0 }}
-          animate={isInView3 ? { y: 0, opacity: 1 } : {}}
-          transition={{ type: 'spring', stiffness: 30 }}
-          whileInView={{ opacity: 1 }}
-          className="w-full mt-[64px] flex justify-center"
-        >
-          <div className="flex justify-center w-full gap-4 items-center">
-            <p className="text-white font-bold text-[28px] lg:text-[48px] italic text-center">
-              PREMIAÇÕES <br></br> EXTRA
-            </p>
-            <Image
-              src={'/zz.svg'}
-              width={120}
-              height={80}
-              alt="ZZ"
-              className="w-[80px] lg:w-[120px] h-auto"
-            />
-          </div>
-        </motion.div>
-
-        <div className="w-full flex justify-center h-auto mt-[64px]">
-          <ul className="flex flex-col w-full justify-center items-center text-white text-[36px] lg:text-[48px] font-semibold italic gap-[16px]">
-            {itemsPremiacoes.map((item, index) => (
-              <AnimatedListItem key={index} index={index}>
-                <li className="bg-diferente w-screen h-[90px] flex justify-center items-center">
-                  {item}
-                </li>
-              </AnimatedListItem>
-            ))}
-          </ul>
-        </div>
-        <div className="w-full flex flex-col justify-center relative items-center h-auto ">
-          <Image
-            className="opacity-10 w-full h-auto"
-            src={'/izzat.gif'}
-            width={1280}
-            height={300}
-            alt="Izzat"
-          />
-          <Button
-            text={'SE INSCREVER'}
-            variant={'contained'}
-            onClick={handleOnClick}
-            className="absolute"
-          />
-        </div>
-
-        <Whatsapp />
-      </main>
-      <div className="w-full h-[100px] flex justify-center items-center px-4">
+      </div>
+      <div className="w-full max-w-[800px] flex flex-col mt-8 mx-auto">
+        <p className="text-white font-semibold text-center italic text-[36px]">
+          PARCEIROS
+        </p>
+        <MyCarousel />
+      </div>
+      <div className="w-full h-[100px] flex flex-col justify-center items-center px-4 gap-4 mt-8">
+        <IconBrandInstagram className="text-white w-[36px] h-[36px]" />
         <p className="text-white font-semibold text-center">
           Copyright © 2024. Todos os direitos reservados ao IZZATSQUAD. ©
         </p>

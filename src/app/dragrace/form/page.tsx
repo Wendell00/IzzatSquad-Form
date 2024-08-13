@@ -33,6 +33,10 @@ export default function Form() {
     resolver: zodResolver(schema)
   });
 
+  const handleOnClickLogo = () => {
+    router.push('/');
+  };
+
   const loading = useToggle(false);
 
   const copyToClipboard = () => {
@@ -48,7 +52,7 @@ export default function Form() {
   const categoriesOptions = [
     { label: 'Aspirado', value: 'aspirado' },
     { label: 'Up!', value: 'up' },
-    { label: 'Dianteira TSI', value: 'dianteira_tsi' },
+    { label: 'Dianteira TURBO', value: 'dianteira_turbo' },
     { label: 'Dianteira AP', value: 'dianteira_ap' },
     { label: 'Traseira', value: 'traseira' }
   ];
@@ -111,15 +115,16 @@ export default function Form() {
 
   return (
     <>
-      <nav className="flex w-full justify-center items-center lg:px-24 fixed bg-[#292D39] z-[99] h-[120px] top-0">
+      <nav className="flex flex-row w-full justify-center items-center lg:px-24 fixed bg-[#292D39] z-[99] h-[120px] top-0 px-8">
         <Image
-          src={'/izzat.svg'}
+          src={'/logo.svg'}
           alt="IzzatSquad"
-          height={53}
-          width={268}
-          className="w-[268px"
-          onClick={handleOnClick}
+          height={64}
+          width={64}
+          className="w-[80px] h-[80px] c"
+          onClick={handleOnClickLogo}
         />
+        {/* <IconMenu2 className="text-white w-[40px] h-[40px]" /> */}
       </nav>
       <main className="flex min-h-screen flex-col items-start w-full lg:w-[900px] mt-[32px] mx-auto overflow-hidden px-[4px] lg:px-2">
         <div className="lg:p-8 border-[#ffffff50] lg:border-b-[2px] lg:border-l-[2px] lg:border-solid rounded-sm">
