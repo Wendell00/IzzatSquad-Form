@@ -9,7 +9,7 @@ const MyCarousel = () => {
     <Swiper
       modules={[Autoplay]}
       spaceBetween={30}
-      slidesPerView={2}
+      slidesPerView={3}
       autoplay={{
         delay: 3000,
         disableOnInteraction: false
@@ -24,7 +24,7 @@ const MyCarousel = () => {
             width={200}
             height={56}
             alt={''}
-            className="w-auto h-[60px]"
+            className="w-[160px] h-auto"
           />
         </div>
       </SwiperSlide>
@@ -35,7 +35,7 @@ const MyCarousel = () => {
             width={200}
             height={56}
             alt={''}
-            className="w-auto h-[60px]"
+            className="w-[160px] h-auto"
           />
         </div>
       </SwiperSlide>
@@ -46,7 +46,7 @@ const MyCarousel = () => {
             width={200}
             height={56}
             alt={''}
-            className="w-auto h-[60px]"
+            className="w-[160px] h-auto"
           />
         </div>
       </SwiperSlide>
@@ -57,7 +57,7 @@ const MyCarousel = () => {
             width={200}
             height={56}
             alt={''}
-            className="w-auto h-[60px]"
+            className="w-[160px] h-auto"
           />
         </div>
       </SwiperSlide>
@@ -68,7 +68,7 @@ const MyCarousel = () => {
             width={200}
             height={56}
             alt={''}
-            className="w-auto h-[60px]"
+            className="w-[160px] h-auto"
           />
         </div>
       </SwiperSlide>

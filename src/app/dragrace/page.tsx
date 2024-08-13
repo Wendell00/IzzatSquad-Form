@@ -8,7 +8,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 import AnimatedListItem from '@/components/animated-list/animated-list';
-import { IconMenu2 } from '@tabler/icons-react';
+import { IconBrandInstagram, IconMenu2 } from '@tabler/icons-react';
 
 export default function Home() {
   const router = useRouter();
@@ -18,6 +18,10 @@ export default function Home() {
 
   const handleOnClickLogo = () => {
     router.push('/');
+  };
+
+  const handleOnClickFooter = () => {
+    router.push('https://www.instagram.com/izzatsquad/');
   };
 
   const itemsValor = [
@@ -206,7 +210,11 @@ export default function Home() {
 
         <Whatsapp />
       </main>
-      <div className="w-full h-[100px] flex justify-center items-center px-4">
+      <div className="w-full h-[100px] flex flex-col justify-center items-center px-4 gap-4 mt-8">
+        <IconBrandInstagram
+          className="text-white w-[36px] h-[36px] cursor-pointer"
+          onClick={handleOnClickFooter}
+        />
         <p className="text-white font-semibold text-center">
           Copyright © 2024. Todos os direitos reservados ao IZZATSQUAD. ©
         </p>

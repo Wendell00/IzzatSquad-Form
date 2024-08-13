@@ -96,7 +96,7 @@ export default function Form() {
         number: numeroAleatorio
       });
 
-      router.push(`/form/${numeroAleatorio}/success`);
+      router.push(`/dragrace/form/${numeroAleatorio}/success`);
       form.reset();
     } catch (error) {
       alert(`Erro, Atualize a página e faça novamente`);

@@ -20,6 +20,10 @@ export default function Home() {
   const ref4 = useRef(null);
   const isInView4 = useInView(ref4);
 
+  const handleOnClickFooter = () => {
+    router.push('https://www.instagram.com/izzatsquad/');
+  };
+
   const router = useRouter();
   const handleOnClick = () => {
     router.push('/dragrace');
@@ -113,7 +117,10 @@ export default function Home() {
         <MyCarousel />
       </div>
       <div className="w-full h-[100px] flex flex-col justify-center items-center px-4 gap-4 mt-8">
-        <IconBrandInstagram className="text-white w-[36px] h-[36px]" />
+        <IconBrandInstagram
+          className="text-white w-[36px] h-[36px] cursor-pointer"
+          onClick={handleOnClickFooter}
+        />
         <p className="text-white font-semibold text-center">
           Copyright © 2024. Todos os direitos reservados ao IZZATSQUAD. ©
         </p>
