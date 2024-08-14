@@ -15,7 +15,7 @@ export default function Success({ params }: { params: { number: string } }) {
   };
   return (
     <>
-      <nav className="flex w-full justify-center items-center lg:px-24 fixed bg-[#292D39] z-[99] h-[120px] top-0">
+      <nav className="flex w-full justify-center items-center lg:px-24 fixed bg-[#1a1a1b] z-[99] h-[120px] top-0">
         <Image
           src={'/izzat.svg'}
           alt="IzzatSquad"
