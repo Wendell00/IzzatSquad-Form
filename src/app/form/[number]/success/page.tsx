@@ -35,7 +35,7 @@ export default function Success({ params }: { params: { number: string } }) {
         </p>
         <p className="text-white font-medium  text-[18] lg:text-[24px] text-center mt-[16px]">
           Entraremos em contato com você lhe enviando o grupo exclusivo para
-          pilotospedimos que aguarde o contato.
+          pilotos pedimos que aguarde o contato.
         </p>
         <p className="text-white font-medium  text-[18] lg:text-[24px] text-center mt-[16px]">
           E aguardamos sua presença no evento! e qualquer dúvida entre em
