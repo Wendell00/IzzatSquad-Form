@@ -38,6 +38,8 @@ export default function Home() {
   const isInView3 = useInView(ref3);
   const ref4 = useRef(null);
   const isInView4 = useInView(ref4);
+  const ref5 = useRef(null);
+  const isInView5 = useInView(ref5);
 
   const itemsPremiacoes = ['PILOTO DESTAQUE', 'CARRO DESTAQUE'];
 
@@ -175,7 +177,7 @@ export default function Home() {
           className="w-full mt-[64px] flex justify-center"
         >
           <div className="flex justify-center w-full gap-4 items-center">
-            <p className="text-white font-bold text-[28px] lg:text-[48px] italic text-center">
+            <p className="text-white font-bold text-[36px] lg:text-[48px] italic text-center">
               PREMIAÇÕES <br></br> EXTRA
             </p>
           </div>
@@ -192,6 +194,31 @@ export default function Home() {
             ))}
           </ul>
         </div>
+        <motion.div
+          ref={ref5}
+          initial={{ y: -100, opacity: 0 }}
+          animate={isInView5 ? { y: 0, opacity: 1 } : {}}
+          transition={{ type: 'spring', stiffness: 30 }}
+          whileInView={{ opacity: 1 }}
+          className="w-full mt-[64px] flex justify-center"
+        >
+          <div className="flex justify-center w-full gap-4 items-center">
+            <p className="text-white font-bold text-[36px] lg:text-[48px] italic text-center">
+              LOCAL
+            </p>
+          </div>
+        </motion.div>
+        <div className="w-full flex flex-col justify-center relative items-center h-auto gap-8 mt-[64px]">
+          <p className='text-white lg:text-[32px] text-[24px] w-[80%]'>Arena Carnelós Centro de Eventos - Sorocaba</p>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14629.989306147054!2d-47.5286295!3d-23.5505755!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c58c7f4db2e573%3A0xa30026e3c0adbe61!2sArena%20Carnel%C3%B3s%20Centro%20de%20Eventos%20-%20Sorocaba!5e0!3m2!1spt-BR!2sbr!4v1723593988972!5m2!1spt-BR!2sbr"
+            width="600"
+            height="450"
+            allowFullScreen={true}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
         <div className="w-full flex flex-col justify-center relative items-center h-auto ">
           <Image
             className="opacity-10 w-full h-auto"
@@ -207,7 +234,6 @@ export default function Home() {
             className="absolute"
           />
         </div>
-
         <Whatsapp />
       </main>
       <div className="w-full h-[100px] flex flex-col justify-center items-center px-4 gap-4 mt-8 bg-[#1a1a1b]">
