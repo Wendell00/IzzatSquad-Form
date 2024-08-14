@@ -209,7 +209,9 @@ export default function Home() {
           </div>
         </motion.div>
         <div className="w-full flex flex-col justify-center relative items-center h-auto gap-8 mt-[64px]">
-          <p className='text-white lg:text-[32px] text-[24px] w-[80%]'>Arena Carnelós Centro de Eventos - Sorocaba</p>
+          <p className="text-white lg:text-[32px] text-[24px] w-[80%] text-center">
+            Arena Carnelós Centro de Eventos - Sorocaba
+          </p>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14629.989306147054!2d-47.5286295!3d-23.5505755!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c58c7f4db2e573%3A0xa30026e3c0adbe61!2sArena%20Carnel%C3%B3s%20Centro%20de%20Eventos%20-%20Sorocaba!5e0!3m2!1spt-BR!2sbr!4v1723593988972!5m2!1spt-BR!2sbr"
             width="600"
