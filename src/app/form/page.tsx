@@ -53,7 +53,7 @@ export default function Form() {
     { label: 'Aspirado', value: 'aspirado' },
     { label: 'Up!', value: 'up' },
     { label: 'Ap', value: 'ap' },
-    { label: 'Dianteira TURBO', value: 'dianteira_turbo' },
+    { label: 'Dianteira Turbo', value: 'dianteira_turbo' },
     { label: 'Traseira Turbo', value: 'traseira_turbo' }
   ];
 
