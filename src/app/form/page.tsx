@@ -52,9 +52,9 @@ export default function Form() {
   const categoriesOptions = [
     { label: 'Aspirado', value: 'aspirado' },
     { label: 'Up!', value: 'up' },
+    { label: 'Ap', value: 'ap' },
     { label: 'Dianteira TURBO', value: 'dianteira_turbo' },
-    { label: 'Dianteira AP', value: 'dianteira_ap' },
-    { label: 'Traseira', value: 'traseira' }
+    { label: 'Traseira Turbo', value: 'traseira_turbo' }
   ];
 
   const comprovanteOptions = [
@@ -125,7 +125,7 @@ export default function Form() {
           onClick={handleOnClickLogo}
         />
       </nav>
-      <main className="flex min-h-screen flex-col items-start w-full lg:w-[900px] mt-[32px] mx-auto overflow-hidden px-[4px] lg:px-2">
+      <main className="flex min-h-screen flex-col items-start w-full lg:w-[900px] mt-[32px] mx-auto overflow-hidden px-[12px] lg:px-2">
         <div className="lg:p-8 border-[#ffffff50] lg:border-b-[2px] lg:border-l-[2px] lg:border-solid rounded-sm">
           <p className="text-white  italic text-[24px] lg:text-[36px] tracking-[0.15px] font-normal leading-[34px]">
             INSCRIÇÕES PARA PILOTO

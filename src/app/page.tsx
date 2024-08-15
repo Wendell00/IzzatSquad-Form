@@ -208,7 +208,7 @@ export default function Home() {
             </p>
           </div>
         </motion.div>
-        <div className="w-full flex flex-col justify-center relative items-center h-auto gap-8 mt-[64px]">
+        <div className="w-full flex flex-col justify-center relative items-center h-auto gap-8 mt-[64px] px-4">
           <p className="text-white lg:text-[32px] text-[24px] w-[80%] text-center font-semibold italic">
             Arena Carnelós Centro de Eventos - Sorocaba
           </p>
@@ -219,6 +219,7 @@ export default function Home() {
             allowFullScreen={true}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
+            className="w-full h-[400px]"
           ></iframe>
         </div>
         <div className="w-full flex flex-col justify-center relative items-center h-auto ">
