@@ -19,7 +19,6 @@ import {
 import { useForm } from 'react-hook-form';
 import { firebaseConfig } from '@/services/firebase';
 
-import { initializeApp } from 'firebase/app';
 import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
 import { fileToBase64 } from '@/utils/helpers';
 
@@ -27,6 +26,7 @@ import { Whatsapp } from '@/components/whatsapp';
 import { useRouter } from 'next/navigation';
 import { IconClipboard } from '@tabler/icons-react';
 import { useToggle } from '@/hooks/use-toggle';
+import { initializeApp } from 'firebase/app';
 
 enum FormType {
   'piloto' = 'piloto',
@@ -131,7 +131,7 @@ export default function Form() {
     try {
       await addDoc(collection(db, 'formularios box'), data);
 
-      router.push(`/form/successBox`);
+      router.push(`/form/success`);
       form.reset();
     } catch (error) {
       alert(`Erro, Atualize a página e faça novamente`);
@@ -143,6 +143,8 @@ export default function Form() {
   }
 
   const comprovanteWhatsapp = form.watch('comprovanteWhatsapp');
+
+  const comprovanteWhatsappPedreste = formBox.watch('comprovanteWhatsapp');
 
   const handleOnClick = () => {
     router.push('/');
@@ -447,7 +449,7 @@ export default function Form() {
                 />
               </div>
 
-              {comprovanteWhatsapp === 'sim' ? null : (
+              {comprovanteWhatsappPedreste === 'sim' ? null : (
                 <div className="w-full flex flex-col gap-[8px]">
                   <FormLabel
                     id="demo-radio-buttons-group-label"
